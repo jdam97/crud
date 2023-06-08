@@ -1,0 +1,59 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html{
+    font: 62.5%;
+}
+body{
+    display: flex;
+    justify-content: center;
+    border-bottom: thin solid #111;
+}
+
+
+
+form{
+    display: flex;
+    gap: 5rem;
+    padding: 1rem;
+   
+}
+
+.contenedor-info{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.contenedor-logo{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.logo{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .3rem;
+}
+
+.botones{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 1rem;
+}
+
+img{
+    width: 5rem;
+}
+input{
+    padding: .6rem;
+}
+
+button{
+    padding: .6rem;
+    width: 2.6rem;
+}
