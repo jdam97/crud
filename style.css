@@ -10,16 +10,12 @@ html{
 body{
     display: flex;
     justify-content: center;
-    border-bottom: thin solid #111;
 }
-
-
 
 form{
     display: flex;
     gap: 5rem;
     padding: 1rem;
-   
 }
 
 .contenedor-info{
@@ -56,4 +52,17 @@ input{
 button{
     padding: .6rem;
     width: 2.6rem;
+}
+.contenedor-tabla{
+    overflow-y: auto;  /* con esto hago el scroll en el eje y */
+    height: 25rem; /* debo darle una altura definida */
+}
+
+td{
+    text-align: center;
+}
+
+td button{
+    background-color: white;
+    border: none;
 }
