@@ -1,9 +1,47 @@
-<?php 
+<?php
 
+if(isset($_POST['save'])){
+post();
+  
+};
 
+function post (){
+    $nombre = $_POST["nombre"];
+    $apellidos = $_POST["apellidos"];
+    $direccion = $_POST["direccion"];
+    $horario = $_POST["horario"];
+    $team = $_POST["team"];
+    $trainer = $_POST["trainer"];
+    $edad = $_POST["edad"];
+    $email = $_POST["email"];
+    $cedula = $_POST["cedula"];
 
+    $usuario = array(
+        "Nombre" => $nombre,
+        "Apellidos" => $apellidos,
+        "Direccion" => $direccion,
+        "Horario" => $horario,
+        "Team" => $team,
+        "Trainer" => $trainer,
+        "Edad" => $edad,
+        "Email" => $email,
+        "Cedula" => $cedula
+    );
 
+    $usuarioJson = json_encode($usuario);
 
+    $options = array(
+    'http'=> array(
+    'method' => "POST",
+    'header'=> "Content-Type: application/json",
+    'content'=>$usuarioJson
+    )
+    );
+
+    $config = stream_context_create($options);
+    $url = "https://648387abf2e76ae1b95ca019.mockapi.io/datosCrud";
+    $data = file_get_contents($url, false, $config);    
+}
 
 
 
@@ -21,14 +59,14 @@
 </head>
 <body>
 <div class="contenedorglobal">
-    <form action="">
+    <form method="POST">
         <div class="contenedor-info">
-            <input type="text" name="info" placeholder="Nombre">
-            <input type="text" name="info" placeholder="Apellidos">
-            <input type="text" name="info" placeholder="Direccion">
-            <input type="text" name="info" placeholder="Horario de entrada">
-            <input type="text" name="info" placeholder="Team">
-            <input type="text" name="info" placeholder="Trainer">
+            <input type="text" name="nombre" placeholder="Nombre">
+            <input type="text" name="apellidos" placeholder="Apellidos">
+            <input type="text" name="direccion" placeholder="Direccion">
+            <input type="text" name="horario" placeholder="Horario de entrada">
+            <input type="text" name="team" placeholder="Team">
+            <input type="text" name="trainer" placeholder="Trainer">
         </div>
 
         <div class="contenedor-logo">
@@ -37,14 +75,14 @@
                 <img src="img/campuslogo.jpeg" alt="">
             </div>
             
-            <input type="number" name="info" placeholder="Edad">
-            <input type="email" name="info" placeholder="Email">
-            <input type="number" name="info" placeholder="Cedula">
+            <input type="number" name="edad" placeholder="Edad">
+            <input type="email" name="email" placeholder="Email">
+            <input type="number" name="cedula" placeholder="Cedula">
             <div class="botones">
-                <button type="submit"><i class="fa-solid fa-check"></i></button>
-                <button type="submit"><i class="fa-solid fa-circle-xmark"></i></button>
-                <button type="submit"><i class="fa-solid fa-pencil"></i></button>
-                <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button type="submit" name="save"><i class="fa-solid fa-check"></i></button>
+                <button type="submit" name="delete"><i class="fa-solid fa-circle-xmark"></i></button>
+                <button type="submit" name="edit"><i class="fa-solid fa-pencil"></i></button>
+                <button type="submit" name="search"><i class="fa-solid fa-magnifying-glass"></i></button>
             </div>
             
         </div>
@@ -77,7 +115,7 @@
                 <td>5:00am</td>
                 <td>M3</td>
                 <td>Miguel</td>
-                <td><button type="submit"><i class="fa-solid fa-eye"></i></td></button> 
+                <td class="ojito"><button name="get" type="submit"><i class="fa-solid fa-eye"></i></td></button> 
             </tr>
         </tbody>
     </table>
